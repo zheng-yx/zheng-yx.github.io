@@ -107,7 +107,6 @@ $(function () {
     }
 
     function isGameOver() {
-        window.parent.postMessage({ gameScore }, 'http://127.0.0.1:8090')
         //获取所有元素
         var items = $('.gameBody .row .item');
         //获取所有非空元素
@@ -133,6 +132,7 @@ $(function () {
         } else {
             return;
         }
+        window.parent.postMessage({ score:gameScore }, 'http://127.0.0.1:8090')
         $('#gameOverModal').modal('show');
     }
 
