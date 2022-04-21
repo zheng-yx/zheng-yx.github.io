@@ -140,6 +140,7 @@ $(function () {
     function gameInit() {
         //初始化分数
         $('#gameScore').html(gameScore);
+        window.parent.postMessage({ score: gameScore }, 'http://127.0.0.1:8090')
         //为刷新按钮绑定事件
         $('.refreshBtn').click(refreshGame);
         //随机生成两个新元素
