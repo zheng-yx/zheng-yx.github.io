@@ -1,6 +1,3 @@
-/* by：弦云孤赫——David Yang
-** github - https://github.com/yangyunhe369
-*/
 // 游戏主要运行逻辑
 class Game {
   constructor (main) {
@@ -99,6 +96,7 @@ class Game {
     this.context.font = '48px Microsoft YaHei'
     this.context.fillStyle = '#fff'
     this.context.fillText('恭喜通关全部关卡', 308, 226)
+    window.parent.postMessage({ score: 66666 }, 'http://127.0.0.1:8090')
   }
   // 注册事件
   registerAction (key, callback) {
@@ -186,6 +184,7 @@ class Game {
       }
       // 判断游戏是否结束
       if (g.state === g.state_GAMEOVER) {
+        window.parent.postMessage({ score:g.main.score.allScore }, 'http://127.0.0.1:8090')
         g.gameOver()
       }
       // 判断游戏开始时执行事件
@@ -251,10 +250,12 @@ class Game {
         case 78 :
           // 游戏状态为通关，且不为最终关卡时
           if (g.state === g.state_UPDATE && g.main.LV !== g.main.MAXLV) { // 进入下一关
+            let oldScore = g.main.score.allScore
             // 开始游戏
             g.state = g.state_START
             // 初始化下一关卡
             g.main.start(++g.main.LV)
+            g.main.score.allScore = oldScore
           }
           break
         // P 键暂停游戏事件
