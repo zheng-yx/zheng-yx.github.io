@@ -12,6 +12,7 @@ $(function () {
             items.eq(i).html('').removeClass('nonEmptyItem').addClass('emptyItem');
         }
         gameScore = 0;
+        window.parent.postMessage({ gameScore }, 'http://127.0.0.1:8090')
         //分数清零
         $('#gameScore').html(gameScore);
         //随机生成两个新元素
@@ -106,6 +107,7 @@ $(function () {
     }
 
     function isGameOver() {
+        window.parent.postMessage({ gameScore }, 'http://127.0.0.1:8090')
         //获取所有元素
         var items = $('.gameBody .row .item');
         //获取所有非空元素
