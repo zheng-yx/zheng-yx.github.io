@@ -363,6 +363,7 @@ var spring = function() {
 var Spring = new spring();
 
 function init() {
+    window.parent.postMessage({ score: 0 }, 'http://127.0.0.1:8090')
     //Variables for the game
     var dir = "left",
         jumpCount = 0;
