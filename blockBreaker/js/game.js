@@ -240,6 +240,7 @@ class Game {
             g.state = g.state_START
             // 初始化
             g.main.start()
+            window.parent.postMessage({ score:0 }, 'http://127.0.0.1:8090')
           } else { 
             // 开始游戏
             ball.fired = true
